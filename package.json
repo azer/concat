@@ -1,0 +1,26 @@
+{
+  "name": "concat",
+  "version": "1.0.0",
+  "description": "Concatenate files",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "concatenate",
+    "concat"
+  ],
+  "repository": {
+    "url": "git@github.com:azer/concat.git",
+    "type": "git"
+  },
+  "author": "azer",
+  "license": "BSD",
+  "dependencies": {
+    "parallel-loop": "0.0.1",
+    "serial-loop": "0.0.1"
+  },
+  "devDependencies": {
+    "prova": "^1.10.0"
+  }
+}
