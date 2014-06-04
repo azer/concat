@@ -17,6 +17,7 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
+    "minimist": "^0.1.0",
     "parallel-loop": "0.0.1",
     "serial-loop": "0.0.1"
   },
