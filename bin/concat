@@ -11,7 +11,10 @@ if (!(argv._ && output)) {
 	process.exit(1);
 }
 
-concat(argv._, output, function () {
-	process.exit(0);
+concat(argv._, output, function (err, all) {
+	if (!err) process.exit(0);
+
+	console.error(err);
+	process.exit(1);
 });
 
