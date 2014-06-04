@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var concat = require('../index.js');
+var argv = require('minimist')(process.argv.slice(2));
+
+var output = argv.o || argv.output || null;
+
+if (!(argv._ && output)) {
+	console.error('No argument specified.');
+	console.error('concat [file1 ... fileN] -o <outputFile>');
+	process.exit(1);
+}
+
+concat(argv._, output, function (err, all) {
+	if (!err) process.exit(0);
+
+	console.error(err);
+	process.exit(1);
+});
+

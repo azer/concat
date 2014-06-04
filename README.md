@@ -10,8 +10,16 @@ concat(['a.css', 'b.css', 'c.css'], 'all.css', function (error) {
 })
 ```
 
+or, in the shell:
+
+```sh
+concat a.css b.css c.css -o all.css
+```
+
 ## Install
 
-```bash
-$ npm install concat
+```sh
+$ npm install -g concat  	# globally
+
+$ npm install concat  		# for your project
 ```
