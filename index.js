@@ -1,12 +1,12 @@
 var loop = require("serial-loop");
 var fs = require("fs"),
-  stream = require('stream');
+  Stream = require('stream');
 
 module.exports = concat;
 
 function concat (files, dest, callback) {
   
-  var destIsStream = (dest instanceof stream.Writable);
+  var destIsStream = (dest instanceof Stream);
   var wstream = destIsStream ? dest : fs.createWriteStream(dest);
 
   loop(files.length, each, function(){
@@ -21,3 +21,4 @@ function concat (files, dest, callback) {
     rstream.on('end', done);
   }
 }
+
