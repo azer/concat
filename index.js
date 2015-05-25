@@ -1,22 +1,23 @@
 var loop = require("serial-loop");
-var fs = require("fs");
+var fs = require("fs"),
+  stream = require('stream');
 
 module.exports = concat;
 
 function concat (files, dest, callback) {
-  fs.writeFile(dest, '', function (error) {
-    if (error) return callback(error);
+  
+  var destIsStream = (dest instanceof stream.Writable);
+  var wstream = destIsStream ? dest : fs.createWriteStream(dest);
 
-    loop(files.length, each, callback);
-
-    function each (done, i) {
-      fs.readFile(files[i], function (error, buffer) {
-        if (error) return done(error);
-
-        fs.appendFile(dest, buffer, done);
-      });
-    }
-
+  loop(files.length, each, function(){
+    // Close the stream if this function spawned it
+    if (!destIsStream) wstream.end();
+    callback();
   });
 
+  function each (done, i) {
+    var rstream = fs.createReadStream(files[i]);
+    rstream.pipe(wstream, {end: false});
+    rstream.on('end', done);
+  }
 }
