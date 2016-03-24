@@ -17,8 +17,8 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
-    "parallel-loop": "0.0.1",
-    "serial-loop": "0.0.1"
+    "parallel-loop": "azer/parallel-loop",
+    "serial-loop": "azer/serial-loop"
   },
   "devDependencies": {
     "prova": "^1.10.0"
